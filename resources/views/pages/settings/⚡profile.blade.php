@@ -14,6 +14,9 @@ new #[Title('Profile settings')] class extends Component {
 
     public string $name = '';
     public string $email = '';
+    public string $staff_id = '';
+    public string $phone = '';
+    public string $department = '';
 
     /**
      * Mount the component.
@@ -22,27 +25,36 @@ new #[Title('Profile settings')] class extends Component {
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->staff_id = Auth::user()->staff_id;
+        $this->phone = Auth::user()->phone;
+        $this->department = Auth::user()->department;
     }
 
     /**
      * Update the profile information for the currently authenticated user.
      */
-    public function updateProfileInformation(): void
-    {
-        $user = Auth::user();
+   public function updateProfileInformation(): void
+{
+    $user = Auth::user();
 
-        $validated = $this->validate($this->profileRules($user->id));
+    $validated = $this->validate(array_merge(
+        $this->profileRules($user->id),
+        [
+            'phone' => ['nullable', 'string', 'max:20', 'regex:/^\+?[0-9\s\-]{7,20}$/'],
+            'department' => ['nullable', 'string', 'max:100'],
+        ]
+    ));
 
-        $user->fill($validated);
+    $user->fill($validated);
 
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
-
-        $user->save();
-
-        Flux::toast(variant: 'success', text: __('Profile updated.'));
+    if ($user->isDirty('email')) {
+        $user->email_verified_at = null;
     }
+
+    $user->save();
+
+    Flux::toast(variant: 'success', text: __('Profile updated.'));
+}
 
     /**
      * Send an email verification notification to the current user.
@@ -106,6 +118,14 @@ new #[Title('Profile settings')] class extends Component {
                     </div>
                 @endif
             </div>
+
+              {{-- New bio fields start here --}}
+            <flux:input :value="$staff_id" :label="__('Staff ID')" type="text" readonly disabled />
+
+            <flux:input wire:model="phone" :label="__('Phone')" type="tel" placeholder="+233 24 000 0000" autocomplete="tel" />
+
+            <flux:input wire:model="department" :label="__('Department')" type="text" placeholder="Applications Support" />
+            {{-- New bio fields end here --}}
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center justify-end">
