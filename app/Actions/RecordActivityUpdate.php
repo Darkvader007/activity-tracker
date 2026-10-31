@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Actions;
+
 use App\Enums\ActivityStatus;
 use App\Models\Activity;
 use App\Models\ActivityUpdate;
@@ -16,6 +17,7 @@ class RecordActivityUpdate
     {
         //
     }
+
     public function handle(Activity $activity, User $user, ActivityStatus $status, ?string $remark = null): ActivityUpdate
     {
         if (! $user->is_active) {

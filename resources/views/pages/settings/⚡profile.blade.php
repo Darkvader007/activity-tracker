@@ -25,9 +25,9 @@ new #[Title('Profile settings')] class extends Component {
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
-        $this->staff_id = Auth::user()->staff_id;
-        $this->phone = Auth::user()->phone;
-        $this->department = Auth::user()->department;
+        $this->staff_id = Auth::user()->staff_id ?? '';
+        $this->phone = Auth::user()->phone ?? '';
+        $this->department = Auth::user()->department ?? '';
     }
 
     /**

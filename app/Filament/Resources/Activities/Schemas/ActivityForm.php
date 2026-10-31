@@ -2,11 +2,12 @@
 
 namespace App\Filament\Resources\Activities\Schemas;
 
-use Filament\Forms\Components\TextInput;
+use App\Models\Activity;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
-use Filament\Forms\Components\Select;
 
 class ActivityForm
 {
@@ -15,24 +16,24 @@ class ActivityForm
         return $schema
             ->components([
                 TextInput::make('title')
-                   ->required()
-                   ->maxLength(150)
-                   ->placeholder('e.g. Daily SMS count vs SMS count from logs'),
+                    ->required()
+                    ->maxLength(150)
+                    ->placeholder('e.g. Daily SMS count vs SMS count from logs'),
 
-               Select::make('category')
-                   ->options(\App\Models\Activity::CATEGORIES)
-                   ->required()
-                   ->native(false),
+                Select::make('category')
+                    ->options(Activity::CATEGORIES)
+                    ->required()
+                    ->native(false),
 
-              Textarea::make('description')
-                   ->rows(3)
-                   ->placeholder('How to perform this check, what to compare, who to escalate to')
-                   ->columnSpanFull(),
+                Textarea::make('description')
+                    ->rows(3)
+                    ->placeholder('How to perform this check, what to compare, who to escalate to')
+                    ->columnSpanFull(),
 
-               Toggle::make('is_active')
-                   ->label('Active')
-                   ->default(true)
-                   ->helperText('Inactive activities are hidden from the daily board but keep their history.'),
+                Toggle::make('is_active')
+                    ->label('Active')
+                    ->default(true)
+                    ->helperText('Inactive activities are hidden from the daily board but keep their history.'),
             ]);
     }
 }

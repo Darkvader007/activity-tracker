@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Enums\ActivityStatus;
+use Database\Factories\ActivityUpdateFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ActivityUpdate extends Model
 {
-    /** @use HasFactory<\Database\Factories\ActivityUpdateFactory> */
+    /** @use HasFactory<ActivityUpdateFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -27,11 +28,12 @@ class ActivityUpdate extends Model
             'activity_date' => 'date',
         ];
     }
+
     protected static function booted(): void
-   {
-    static::updating(fn () => throw new \LogicException('Activity updates cannot be changed once recorded.'));
-    static::deleting(fn () => throw new \LogicException('Activity updates cannot be deleted.'));
-  }
+    {
+        static::updating(fn () => throw new \LogicException('Activity updates cannot be changed once recorded.'));
+        static::deleting(fn () => throw new \LogicException('Activity updates cannot be deleted.'));
+    }
 
     public function activity(): BelongsTo
     {

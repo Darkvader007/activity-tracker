@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Enums\ActivityStatus;
 use App\Models\Activity;
 use App\Models\ActivityUpdate;
 use App\Models\User;
+use Illuminate\Database\Seeder;
 
 class ActivityUpdateSeeder extends Seeder
 {
@@ -59,7 +58,7 @@ class ActivityUpdateSeeder extends Seeder
                 }
             }
 
-                 }
+        }
     }
 
     private function record(Activity $activity, User $user, ActivityStatus $status, string $remark, $date, $time): void

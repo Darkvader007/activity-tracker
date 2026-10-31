@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\ActivityUpdate;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Enums\ActivityStatus;
+use App\Models\Activity;
+use App\Models\ActivityUpdate;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<ActivityUpdate>
@@ -20,8 +22,8 @@ class ActivityUpdateFactory extends Factory
     {
         return [
             //
-            'activity_id' => \App\Models\Activity::factory(),
-            'user_id' => \App\Models\User::factory(),
+            'activity_id' => Activity::factory(),
+            'user_id' => User::factory(),
             'status' => fake()->randomElement(ActivityStatus::cases()),
             'remark' => fake()->optional()->sentence(),
             'activity_date' => fake()->dateTimeBetween('-14 days', 'now'),

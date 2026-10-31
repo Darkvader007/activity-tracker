@@ -5,7 +5,7 @@ namespace App\Enums;
 enum ActivityStatus: string
 {
     //
-     case Pending = 'pending';
+    case Pending = 'pending';
     case Done = 'done';
 
     public function label(): string

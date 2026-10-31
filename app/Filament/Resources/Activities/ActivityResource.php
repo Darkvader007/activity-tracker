@@ -57,7 +57,8 @@ class ActivityResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
     protected static ?string $navigationLabel = 'Activities';
 
-protected static string|\UnitEnum|null $navigationGroup = 'Setup';
+    protected static string|\UnitEnum|null $navigationGroup = 'Setup';
 }

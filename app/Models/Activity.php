@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Database\Factories\ActivityFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Activity extends Model
 {
-    /** @use HasFactory<\Database\Factories\ActivityFactory> */
+    /** @use HasFactory<ActivityFactory> */
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
@@ -51,11 +52,11 @@ class Activity extends Model
     }
 
     public const CATEGORIES = [
-     'SMS' => 'SMS',
-     'USSD' => 'USSD',
-     'Payments' => 'Payments',
-     'Infrastructure' => 'Infrastructure',
-     'Monitoring' => 'Monitoring',
-     'Support' => 'Support',
-];
+        'SMS' => 'SMS',
+        'USSD' => 'USSD',
+        'Payments' => 'Payments',
+        'Infrastructure' => 'Infrastructure',
+        'Monitoring' => 'Monitoring',
+        'Support' => 'Support',
+    ];
 }
