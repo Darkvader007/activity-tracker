@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Contracts\PasskeyUser;
 use Laravel\Fortify\PasskeyAuthenticatable;
 use Spatie\Permission\Traits\HasRoles; 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -60,4 +61,9 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
             ? Str::substr($initials, 0, 1).Str::substr($initials, -1)
             : $initials;
     }
+
+    public function activityUpdates(): HasMany
+{
+    return $this->hasMany(ActivityUpdate::class);
+}
 }

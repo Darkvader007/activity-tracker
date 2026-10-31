@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Activity extends Model
+{
+    /** @use HasFactory<\Database\Factories\ActivityFactory> */
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'category',
+        'is_active',
+        'created_by',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+        ];
+    }
+
+    public function updates(): HasMany
+    {
+        return $this->hasMany(ActivityUpdate::class);
+    }
+
+    public function latestUpdate(): HasOne
+    {
+        return $this->hasOne(ActivityUpdate::class)->latestOfMany();
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('is_active', true);
+    }
+
+
+}
