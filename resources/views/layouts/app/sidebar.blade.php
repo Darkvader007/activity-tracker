@@ -14,6 +14,11 @@
                 <flux:sidebar.group :heading="__('Platform')" class="grid">
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
+                        @role('admin')
+    <flux:navlist.item icon="cog-6-tooth" href="/admin">
+        {{ __('Admin') }}
+    </flux:navlist.item>
+@endrole
                     </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>

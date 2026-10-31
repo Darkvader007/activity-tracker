@@ -15,6 +15,9 @@ use Laravel\Fortify\Contracts\PasskeyUser;
 use Laravel\Fortify\PasskeyAuthenticatable;
 use Spatie\Permission\Traits\HasRoles; 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+
 
 /**
  * @property int $id
@@ -31,7 +34,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 #[Fillable(['name', 'email', 'password', 'staff_id', 'phone', 'department', 'is_active'])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
-class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
+class User extends Authenticatable implements MustVerifyEmail, PasskeyUser, FilamentUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, PasskeyAuthenticatable, HasRoles;
@@ -65,5 +68,10 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
     public function activityUpdates(): HasMany
 {
     return $this->hasMany(ActivityUpdate::class);
+}
+
+public function canAccessPanel(Panel $panel): bool
+{
+    return $this->hasRole('admin') && $this->is_active;
 }
 }

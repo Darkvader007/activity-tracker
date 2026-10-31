@@ -50,5 +50,12 @@ class Activity extends Model
         $query->where('is_active', true);
     }
 
-
+    public const CATEGORIES = [
+    'SMS' => 'SMS',
+    'USSD' => 'USSD',
+    'Payments' => 'Payments',
+    'Infrastructure' => 'Infrastructure',
+    'Monitoring' => 'Monitoring',
+    'Support' => 'Support',
+];
 }
