@@ -22,40 +22,41 @@ class ActivitiesTable
         return $table
             ->columns([
                 TextColumn::make('title')
-    ->searchable()
-    ->sortable()
-    ->wrap(),
+                 ->searchable()
+                 ->sortable()
+                 ->wrap(),
 
-TextColumn::make('category')
-    ->badge()
-    ->sortable(),
+               TextColumn::make('category')
+                  ->badge()
+                  ->sortable(),
 
-IconColumn::make('is_active')
-    ->label('Active')
-    ->boolean(),
+               IconColumn::make('is_active')
+                  ->label('Active')
+                  ->boolean(),
 
-TextColumn::make('updates_count')
-    ->label('Updates')
-    ->counts('updates')
-    ->sortable(),
+               TextColumn::make('updates_count')
+                   ->label('Updates')
+                   ->counts('updates')
+                   ->sortable(),
 
-TextColumn::make('creator.name')
-    ->label('Created by')
-    ->toggleable(),
+               TextColumn::make('creator.name')
+                   ->label('Created by')
+                   ->toggleable(),
 
-TextColumn::make('created_at')
-    ->dateTime('d M Y')
-    ->sortable()
-    ->toggleable(isToggledHiddenByDefault: true),
+               TextColumn::make('created_at')
+                    ->dateTime('d M Y')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
+
+         ->filters([
                 SelectFilter::make('category')
-    ->options(\App\Models\Activity::CATEGORIES),
+                  ->options(\App\Models\Activity::CATEGORIES),
 
-TernaryFilter::make('is_active')
-    ->label('Active'),
+                TernaryFilter::make('is_active')
+                   ->label('Active'),
 
-TrashedFilter::make(),
+               TrashedFilter::make(),
             ]);
     }
 }

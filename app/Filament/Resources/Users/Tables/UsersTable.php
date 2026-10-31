@@ -16,25 +16,25 @@ class UsersTable
         return $table
             ->columns([
                 TextColumn::make('name')
-    ->searchable()
-    ->sortable(),
+                  ->searchable()
+                  ->sortable(),
 
-TextColumn::make('staff_id')
-    ->label('Staff ID')
-    ->searchable(),
+               TextColumn::make('staff_id')
+                  ->label('Staff ID')
+                  ->searchable(),
 
-TextColumn::make('email')
-    ->searchable(),
+               TextColumn::make('email')
+                  ->searchable(),
 
-TextColumn::make('department')
-    ->toggleable(),
+               TextColumn::make('department')
+                  ->toggleable(),
 
-TextColumn::make('roles.name')
-    ->badge(),
+               TextColumn::make('roles.name')
+                 ->badge(),
 
-IconColumn::make('is_active')
-    ->label('Active')
-    ->boolean(),
+              IconColumn::make('is_active')
+                   ->label('Active')
+                   ->boolean(),
             ])
             ->filters([
                 //

@@ -21,10 +21,10 @@ class ActivityUpdateFactory extends Factory
         return [
             //
             'activity_id' => \App\Models\Activity::factory(),
-        'user_id' => \App\Models\User::factory(),
-        'status' => fake()->randomElement(ActivityStatus::cases()),
-        'remark' => fake()->optional()->sentence(),
-        'activity_date' => fake()->dateTimeBetween('-14 days', 'now'),
+            'user_id' => \App\Models\User::factory(),
+            'status' => fake()->randomElement(ActivityStatus::cases()),
+            'remark' => fake()->optional()->sentence(),
+            'activity_date' => fake()->dateTimeBetween('-14 days', 'now'),
         ];
     }
 }

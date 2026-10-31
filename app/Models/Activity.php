@@ -51,11 +51,11 @@ class Activity extends Model
     }
 
     public const CATEGORIES = [
-    'SMS' => 'SMS',
-    'USSD' => 'USSD',
-    'Payments' => 'Payments',
-    'Infrastructure' => 'Infrastructure',
-    'Monitoring' => 'Monitoring',
-    'Support' => 'Support',
+     'SMS' => 'SMS',
+     'USSD' => 'USSD',
+     'Payments' => 'Payments',
+     'Infrastructure' => 'Infrastructure',
+     'Monitoring' => 'Monitoring',
+     'Support' => 'Support',
 ];
 }

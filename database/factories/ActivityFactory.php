@@ -23,23 +23,23 @@ class ActivityFactory extends Factory
         return [
             TextInput::make('title')
             ->required()
-    ->maxLength(150)
-    ->placeholder('e.g. Daily SMS count vs SMS count from logs'),
+            ->maxLength(150)
+            ->placeholder('e.g. Daily SMS count vs SMS count from logs'),
 
-Select::make('category')
-    ->options(\App\Models\Activity::CATEGORIES)
-    ->required()
-    ->native(false),
+           Select::make('category')
+            ->options(\App\Models\Activity::CATEGORIES)
+            ->required()
+            ->native(false),
 
-Textarea::make('description')
-    ->rows(3)
-    ->placeholder('How to perform this check, what to compare, who to escalate to')
-    ->columnSpanFull(),
+            Textarea::make('description')
+            ->rows(3)
+            ->placeholder('How to perform this check, what to compare, who to escalate to')
+            ->columnSpanFull(),
 
-Toggle::make('is_active')
-    ->label('Active')
-    ->default(true)
-    ->helperText('Inactive activities are hidden from the daily board but keep their history.'),
+          Toggle::make('is_active')
+           ->label('Active')
+           ->default(true)
+           ->helperText('Inactive activities are hidden from the daily board but keep their history.'),
         ];
     }
 }
