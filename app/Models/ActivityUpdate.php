@@ -35,11 +35,13 @@ class ActivityUpdate extends Model
         static::deleting(fn () => throw new \LogicException('Activity updates cannot be deleted.'));
     }
 
+    /** @return BelongsTo<Activity, $this> */
     public function activity(): BelongsTo
     {
         return $this->belongsTo(Activity::class)->withTrashed();
     }
 
+    /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

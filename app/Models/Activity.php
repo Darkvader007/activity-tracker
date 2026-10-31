@@ -31,21 +31,25 @@ class Activity extends Model
         ];
     }
 
+    /** @return HasMany<ActivityUpdate, $this> */
     public function updates(): HasMany
     {
         return $this->hasMany(ActivityUpdate::class);
     }
 
+    /** @return HasOne<ActivityUpdate, $this> */
     public function latestUpdate(): HasOne
     {
         return $this->hasOne(ActivityUpdate::class)->latestOfMany();
     }
 
+    /** @return BelongsTo<User, $this> */
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    /** @param Builder<Activity> $query */
     public function scopeActive(Builder $query): void
     {
         $query->where('is_active', true);

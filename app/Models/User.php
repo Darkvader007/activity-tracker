@@ -64,6 +64,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Pas
             : $initials;
     }
 
+    /** @return HasMany<ActivityUpdate, $this> */
     public function activityUpdates(): HasMany
     {
         return $this->hasMany(ActivityUpdate::class);

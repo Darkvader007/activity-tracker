@@ -5,7 +5,8 @@ use App\Enums\ActivityStatus;
 use App\Models\Activity;
 use App\Models\ActivityUpdate;
 use Flux\Flux;
-use Illuminate\Support\Carbon;
+use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
@@ -39,17 +40,18 @@ new #[Title('Daily Board')] class extends Component
         }
     }
 
-    #[Computed]
-    public function day(): Carbon
-    {
-        try {
-            $day = Carbon::parse($this->date)->startOfDay();
-        } catch (\Throwable) {
-            $day = today();
-        }
 
-        return $day->greaterThan(today()) ? today() : $day;
+    #[Computed]
+public function day(): CarbonInterface
+{
+    try {
+        $day = CarbonImmutable::parse($this->date)->startOfDay();
+    } catch (\Throwable) {
+        $day = today();
     }
+
+    return $day->greaterThan(today()) ? today() : $day;
+}
 
     #[Computed]
     public function isToday(): bool
