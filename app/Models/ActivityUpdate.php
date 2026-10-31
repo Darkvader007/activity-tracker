@@ -27,6 +27,11 @@ class ActivityUpdate extends Model
             'activity_date' => 'date',
         ];
     }
+    protected static function booted(): void
+   {
+    static::updating(fn () => throw new \LogicException('Activity updates cannot be changed once recorded.'));
+    static::deleting(fn () => throw new \LogicException('Activity updates cannot be deleted.'));
+  }
 
     public function activity(): BelongsTo
     {
