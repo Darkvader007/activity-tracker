@@ -38,6 +38,10 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Pas
     /** @use HasFactory<UserFactory> */
     use HasFactory, HasRoles, Notifiable, PasskeyAuthenticatable;
 
+    protected $attributes = [
+        'is_active' => true,
+    ];
+
     /**
      * Get the attributes that should be cast.
      *
