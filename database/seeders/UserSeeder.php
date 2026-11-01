@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 'staff_id' => 'NPT-001',
                 'phone' => '+233 24 000 0001',
                 'department' => 'Applications Support',
-                'password' => 'password',
+                'password' => config('app.demo_password'),
                 'is_active' => true,
                 'email_verified_at' => now(),
             ]

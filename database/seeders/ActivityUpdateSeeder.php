@@ -16,6 +16,9 @@ class ActivityUpdateSeeder extends Seeder
      */
     public function run(): void
     {
+        if (ActivityUpdate::exists()) {
+            return;
+        }
         //
         $staff = User::role('support')->get();
         $activities = Activity::active()->get();
