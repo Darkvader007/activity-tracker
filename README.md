@@ -14,10 +14,10 @@ Built with Laravel 13 for the Npontu Technologies Platforms Developer assessment
 
 | Role | Email | Password |
 |---|---|---|
-| Admin (team lead) | admin@example.com | [DEMO_PASSWORD] |
-| Support | kwame@example.com | [DEMO_PASSWORD] |
-| Support | ama@example.com | [DEMO_PASSWORD] |
-| Support | kofi@example.com | [DEMO_PASSWORD] |
+| Admin (team lead) | admin@example.com | password |
+| Support | kwame@example.com | password |
+| Support | ama@example.com | password |
+| Support | kofi@example.com | password |
 
 - Everyone signs in at `/login`.
 - Admins also see an **Administration** link that opens the management panel at `/admin`.
