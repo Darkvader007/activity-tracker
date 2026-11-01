@@ -1,9 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/livewire-starter-kit",
+    "name": "darkvader007/activity-tracker",
     "type": "project",
-    "description": "The official Laravel starter kit for Livewire.",
-    "keywords": ["laravel", "framework"],
+    "description": " Daily activity tracker for an applications support team",
+    "keywords": ["activity tracker", "support team", "daily log", "task management", "productivity"],
     "license": "MIT",
     "require": {
         "php": "^8.3",

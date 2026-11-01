@@ -1,7 +1,5 @@
 <?php
 
-test('returns a successful response', function () {
-    $response = $this->get(route('home'));
-
-    $response->assertOk();
+test('the home page redirects to the daily board', function () {
+    $this->get(route('home'))->assertRedirect(route('dashboard'));
 });
