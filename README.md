@@ -191,4 +191,4 @@ tests/Feature/                          Automated tests
 
 ## Author
 
-[YOUR_NAME] · dekimelz@gmail.com
+Addo Gabriel · dekimelz@gmail.com
