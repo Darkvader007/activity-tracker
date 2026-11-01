@@ -3,11 +3,22 @@
 namespace App\Models;
 
 use App\Enums\ActivityStatus;
+use Carbon\CarbonInterface;
 use Database\Factories\ActivityUpdateFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property int $id
+ * @property int $activity_id
+ * @property int $user_id
+ * @property ActivityStatus $status
+ * @property string|null $remark
+ * @property CarbonInterface $activity_date
+ * @property CarbonInterface|null $created_at
+ * @property CarbonInterface|null $updated_at
+ */
 class ActivityUpdate extends Model
 {
     /** @use HasFactory<ActivityUpdateFactory> */

@@ -25,15 +25,27 @@
 
             <flux:spacer />
 
-            <flux:sidebar.nav>
-                <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                    {{ __('Repository') }}
-                </flux:sidebar.item>
+                        <flux:sidebar.nav>
+                <flux:sidebar.group :heading="__('Workspace')" class="grid">
+                    <flux:sidebar.item icon="clipboard-document-check" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                        {{ __('Daily Board') }}
+                    </flux:sidebar.item>
 
-                <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Documentation') }}
-                </flux:sidebar.item>
+                    <flux:sidebar.item icon="chart-bar" :href="route('reports')" :current="request()->routeIs('reports')" wire:navigate>
+                        {{ __('Reports') }}
+                    </flux:sidebar.item>
+                </flux:sidebar.group>
+
+                @role('admin')
+                    <flux:sidebar.group :heading="__('Administration')" class="grid">
+                        <flux:sidebar.item icon="cog-6-tooth" href="{{ url('/admin') }}">
+                            {{ __('Manage activities & users') }}
+                        </flux:sidebar.item>
+                    </flux:sidebar.group>
+                @endrole
             </flux:sidebar.nav>
+
+            <flux:spacer />
 
             <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
         </flux:sidebar>
