@@ -8,7 +8,7 @@ Built with Laravel 13 for the Npontu Technologies Platforms Developer assessment
 
 ## Live demo
 
-**URL:** [https://activity-tracker.onrender.com]
+**URL:** [https://activity-tracker-xomw.onrender.com]
 
 > Hosted on a free tier that sleeps when idle. The first visit after a quiet period can take up to a minute to load.
 
